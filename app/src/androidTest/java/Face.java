@@ -1,12 +1,13 @@
 import java.util.Random;
 
 public class Face {
+    //initalizing variables
     int skinColor;
     int eyeColor;
     int hairColor;
     int hairStyle;
 
-
+    //inital constructor
     public Face(int skin, int eye, int hair, int style) {
         this.skinColor = skin;
         this.eyeColor = eye;
