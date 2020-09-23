@@ -4,10 +4,12 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.graphics.Canvas;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.SeekBar;
 
 import java.util.Random;
@@ -31,7 +33,7 @@ public class Face extends SurfaceView {
     int redID = 50;
     int greenID = 50;
     int blueID = 50;
-    String hairToggle = "Spiky";
+    int hairToggle = 1;
     boolean start;
     int redProgress;
     int blueProgress;
@@ -130,7 +132,7 @@ public class Face extends SurfaceView {
     //to be updated with the spinner through faceController
     public void drawHair(Canvas canvas) {
         //spiky
-        if ( hairToggle == "Spiky" ) {
+        if ( hairToggle == 0 ) {
             canvas.drawLine(600, 200, 600, 100, hairPaint);
             canvas.drawLine(700, 200, 700, 100, hairPaint);
             canvas.drawLine(800, 200, 800, 100, hairPaint);
@@ -140,13 +142,13 @@ public class Face extends SurfaceView {
             canvas.drawLine(1200, 200, 1200, 100, hairPaint);
         }
         //straight
-        if ( hairToggle == "Straight") {
+        if ( hairToggle == 1) {
             canvas.drawLine(600, 200, 1200, 100, hairPaint);
             canvas.drawLine(600, 150, 1200, 50, hairPaint);
             canvas.drawLine(600, 100, 1200, 0, hairPaint);
         }
         //short
-        if ( hairToggle == "Short" ) {
+        if ( hairToggle == 2 ) {
             canvas.drawLine(600, 200, 600, 175, hairPaint);
             canvas.drawLine(650, 200, 650, 175, hairPaint);
             canvas.drawLine(700, 200, 700, 175, hairPaint);
@@ -179,6 +181,11 @@ public class Face extends SurfaceView {
             faceShape.setColor(Color.rgb(redID, greenID, blueID));
         }
     }
+
+    public void setHairToggle(int i) {
+        hairToggle = i;
+    }
+
 
 
 }

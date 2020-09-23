@@ -16,6 +16,15 @@ public class faceController implements OnClickListener, CompoundButton.OnChecked
         this.view = faceView;
     }
 
+    //couldnt make a listener event for spinner, so had to make a method inside of this class to update it
+    //main wouldnt let the view be updated from there
+    //this method is called in main during the OnItemSelectedListener event to update the hairstyle on the face
+    public int setHairStyle(int i ) {
+        this.view.hairToggle = i;
+        this.view.invalidate();
+        return 0;
+    }
+
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
@@ -39,6 +48,7 @@ public class faceController implements OnClickListener, CompoundButton.OnChecked
                 this.view.blueID = i;
                 this.view.setRGB();
                 break;
+
         }
         this.view.invalidate();
     }
@@ -80,6 +90,7 @@ public class faceController implements OnClickListener, CompoundButton.OnChecked
                 this.view.Hair = false;
                 this.view.setRGB();
                 break;
+
         }
         this.view.invalidate();
     }

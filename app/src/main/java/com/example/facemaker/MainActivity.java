@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,7 +20,7 @@ import android.view.SurfaceHolder;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity  {
 
         //setting up view & controller
         Face faceView = findViewById(R.id.faceView);
-        faceController controller = new faceController(faceView);
+        final faceController controller = new faceController(faceView);
 
         //creating buttons to pass onto listener events to the controller below
         Button randomize = findViewById(R.id.randomFace);
@@ -55,8 +56,24 @@ public class MainActivity extends AppCompatActivity  {
         hairButton.setOnClickListener(controller);
         eyesButton.setOnClickListener(controller);
         skinButton.setOnClickListener(controller);
-        //not working creates a bug that breaks the entire program
-        //mySpinner.setOnItemSelectedListener(controller);
+
+
+        //spinner listener event, created tons of bugs so had to declare contrller as final and create a method inside of that controller
+        // to update the value of hairToggle in the view
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
+            {
+                controller.setHairStyle(pos);
+            }
+
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+
+
+
 
 
 
@@ -67,3 +84,6 @@ public class MainActivity extends AppCompatActivity  {
 
 
 }
+
+
+
