@@ -2,7 +2,7 @@
     <string name="app_name">faceMaker</string>
 
     <string-array name="spinnerStuff" >
-        <item>Curly</item>
+        <item>Spiky</item>
         <item>Straight</item>
         <item>Short</item>
     </string-array>
